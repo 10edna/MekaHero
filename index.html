@@ -1,0 +1,1430 @@
+<!-- <!DOCTYPE html> -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/images/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="MekaHero" />
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="MekaHero  - " />
+    <!-- <meta property="og:url" content="https://sushil-thapa.com.np/" /> -->
+    <meta property="og:description" content="MekaHero" />
+    <!-- <meta property="og:image" content="/images/preview.png" /> -->
+    <!-- <meta property="og:image:width" content="400" />
+    <meta property="og:image:height" content="279" /> -->
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <!-- <meta name="twitter:site" content="@sushilthapa98" /> -->
+    <meta
+      name="twitter:title"
+      content="MekaHero - Creative Developer from Nepal"
+    />
+    <meta name="twitter:description" content="MekaHero" />
+    <meta name="twitter:image" content="/images/preview.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        font-family: "Poppins", sans-serif;
+        font-size: 16px;
+        line-height: 24px;
+        font-weight: 500;
+
+        color-scheme: light dark;
+        background-color: #000;
+
+        font-synthesis: none;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-text-size-adjust: 100%;
+
+        /* light theme variables */
+        --color-text-light: #242424;
+        --color-background-light: #000;
+        --color-background-icon-light: #000;
+
+        /* dark theme variables */
+        --color-text-dark: #fff;
+        --color-background-dark: #242424;
+        --color-background-icon-dark: #454545;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      .light-theme {
+        --color-text: var(--color-text-light);
+        --color-background: var(--color-background-light);
+        --color-background-icon: var(--color-background-icon-light);
+      }
+
+      .dark-theme {
+        --color-text: var(--color-text-dark);
+        --color-background: var(--color-background-dark);
+        --color-background-icon: var(--color-background-icon-dark);
+      }
+
+      .experience {
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        z-index: -1;
+      }
+
+      .experience-canavas {
+        width: 100%;
+        height: 100%;
+      }
+
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        padding: 10px 14px;
+        z-index: 2;
+      }
+
+      .main-nav {
+        flex-grow: 1;
+        text-align: right;
+      }
+
+      .dark-theme #logo img {
+        filter: brightness(0) invert(1);
+      }
+
+      .main-nav ul,
+      .side-nav ul {
+        margin: 0;
+        padding: 0;
+      }
+
+      .main-nav li,
+      .side-nav li {
+        display: inline-block;
+      }
+
+      .side-nav li + li {
+        margin-top: 10px;
+      }
+
+      .main-nav li a {
+        color: var(--color-text);
+        display: flex;
+        text-decoration: none;
+        padding: 8px 16px;
+      }
+
+      .main-nav li a svg {
+        margin-right: 5px;
+        fill: #ff0000;
+      }
+
+      .side-nav {
+        position: fixed;
+        bottom: 40px;
+        right: 30px;
+        writing-mode: vertical-rl;
+        font-size: 14px;
+        z-index: 2;
+      }
+
+      .side-nav li a,
+      .play-game-link {
+        padding: 10px 8px;
+        color: #fff;
+        border-radius: 6px;
+        display: inline-block;
+        text-decoration: none;
+        background-color: var(--color-background);
+        position: relative;
+      }
+
+      /* .side-nav li > a::after,
+.play-game-link ::after {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  width: calc(100% + 6px);
+  height: calc(100% + 6px);
+  border: 1px solid #fff;
+} */
+
+      .side-nav li a svg {
+        fill: #fff;
+      }
+
+      .play-game-link {
+        position: fixed;
+        bottom: 50px;
+        left: 30px;
+        writing-mode: vertical-rl;
+        transform: rotate(180deg);
+      }
+
+      .play-game-link svg {
+        transform: rotate(90deg);
+        fill: var(--color-text);
+      }
+
+      .side-nav li:hover > a,
+      .side-nav li a:focus,
+      .play-game-link:hover,
+      .play-game-link:focus {
+        opacity: 0.75;
+      }
+
+      .contact-menu {
+        position: relative;
+        margin-top: 24px;
+      }
+
+      .contact-menu__dropdown {
+        position: absolute;
+        bottom: 0;
+        right: 56px;
+        background-color: var(--color-background);
+        border-radius: 8px;
+        writing-mode: lr-tb;
+        color: var(--color-text);
+        padding: 20px;
+        width: 300px;
+        text-align: center;
+        display: none;
+        box-shadow: -2px 0 40px rgba(0, 0, 0, 0.1);
+      }
+
+      .contact-menu__dropdown--open {
+        display: block;
+      }
+
+      .contact-menu__dropdown::before {
+        content: "";
+        position: absolute;
+        bottom: 24px;
+        left: 100%;
+        border: 10px solid transparent;
+        border-left-color: var(--color-background);
+      }
+
+      .contact-menu__dropdown > svg {
+        fill: #fff;
+      }
+
+      .side-nav .contact-menu__dropdown a {
+        padding: 0;
+        transition: all ease 0.2s;
+      }
+
+      .side-nav .contact-menu__dropdown a:hover {
+        opacity: 0.8;
+      }
+
+      .contact-menu__dropdown .seperator {
+        display: flex;
+        align-items: center;
+        padding: 16px 0;
+      }
+
+      #contact-email {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #contact-email span {
+        margin-right: 4px;
+      }
+
+      .seperator .line {
+        flex-grow: 1;
+        border-bottom: 1px solid #eee;
+      }
+
+      .seperator .text {
+        color: #fff;
+        padding: 0 8px;
+      }
+
+      .social-icons li + li {
+        margin-left: 8px;
+      }
+
+      .social-icons li a {
+        background-color: var(--color-background-icon);
+        border-radius: 50%;
+        width: 35px;
+        height: 35px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .social-icons li a svg {
+        fill: #fff;
+      }
+
+      .section--about {
+        display: none;
+      }
+
+      #close-btn {
+        position: fixed;
+        bottom: 5%;
+        left: calc(50% - 24px);
+        fill: var(--color-text);
+      }
+
+      footer {
+        position: fixed;
+        bottom: 5px;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        color: var(--color-text);
+        font-size: 12px;
+      }
+
+      .cursor {
+        width: 30px;
+        height: 30px;
+        margin-left: -15px;
+        margin-top: -15px;
+        border: 1px solid #fff;
+        border-radius: 50%;
+        z-index: 300;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .cursor-circle {
+        width: 18px;
+        height: 18px;
+        background-color: #000;
+        border-radius: 50%;
+      }
+
+      @media (max-width: 992px) {
+        header {
+          padding: 6px 12px;
+        }
+
+        #logo img {
+          width: 50px;
+          height: 50px;
+        }
+
+        .main-nav li a {
+          padding: 6px 10px;
+        }
+
+        .side-nav {
+          right: 22px;
+        }
+
+        footer {
+          font-size: 10px;
+        }
+      }
+
+      /* @media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+} */
+
+      .dg.ac {
+        z-index: 100 !important;
+      }
+
+      /* Loader */
+      #loader-wrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 200;
+        background-color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .loader {
+        width: 48px;
+        height: 48px;
+        margin: auto;
+        position: relative;
+      }
+
+      .loader:before {
+        content: "";
+        width: 48px;
+        height: 5px;
+        background: #f0808050;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        border-radius: 50%;
+        animation: shadow324 0.5s linear infinite;
+      }
+
+      .loader:after {
+        content: "";
+        width: 100%;
+        height: 100%;
+        background: #f08080;
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-radius: 4px;
+        animation: jump7456 0.5s linear infinite;
+      }
+
+      @keyframes jump7456 {
+        15% {
+          border-bottom-right-radius: 3px;
+        }
+
+        25% {
+          transform: translateY(9px) rotate(22.5deg);
+        }
+
+        50% {
+          transform: translateY(18px) scale(1, 0.9) rotate(45deg);
+          border-bottom-right-radius: 40px;
+        }
+
+        75% {
+          transform: translateY(9px) rotate(67.5deg);
+        }
+
+        100% {
+          transform: translateY(0) rotate(90deg);
+        }
+      }
+
+      @keyframes shadow324 {
+        0%,
+        100% {
+          transform: scale(1, 1);
+        }
+
+        50% {
+          transform: scale(1.2, 1);
+        }
+      }
+    </style>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.164.0/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.164.0/examples/jsm/"
+        }
+      }
+    </script>
+    <!-- <link rel="stylesheet" href="./style.css" /> -->
+    <title>MekaHero</title>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-3Z4W1TNEFY"
+    ></script>
+    <!-- <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-3Z4W1TNEFY");
+    </script> -->
+  </head>
+  <body class="light-theme">
+    <div class="experience">
+      <canvas class="experience-canvas"></canvas>
+    </div>
+    <div id="loader-wrapper">
+      <div class="loader"></div>
+    </div>
+    <header>
+      <a href="#" id="logo">
+        <img
+          src="/public/images/meka_logo.png"
+          width="60"
+          height="60"
+          style="border-radius: 40%"
+          alt="Creative Works Logo"
+        />
+      </a>
+      <nav class="side-nav">
+        <ul>
+          <li>
+            <a href="#" id="about-menu">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 512 512"
+                height="22"
+                width="22"
+              >
+                <path
+                  d="M399 384.2C376.9 345.8 335.4 320 288 320H224c-47.4 0-88.9 25.8-111 64.2c35.2 39.2 86.2 63.8 143 63.8s107.8-24.7 143-63.8zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm256 16a72 72 0 1 0 0-144 72 72 0 1 0 0 144z"
+                />
+              </svg>
+              <span>About Me</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" id="projects-menu">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 576 512"
+                height="24"
+                width="24"
+              >
+                <path
+                  d="M64 0C28.7 0 0 28.7 0 64V352c0 35.3 28.7 64 64 64H240l-10.7 32H160c-17.7 0-32 14.3-32 32s14.3 32 32 32H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H346.7L336 416H512c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64H64zM512 64V352H64V64H512z"
+                />
+              </svg>
+              <span>Projects</span>
+            </a>
+          </li>
+          <li class="contact-menu">
+            <a href="#" id="contact-btn">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 640 512"
+                height="22"
+                width="22"
+              >
+                <path
+                  d="M323.4 85.2l-96.8 78.4c-16.1 13-19.2 36.4-7 53.1c12.9 17.8 38 21.3 55.3 7.8l99.3-77.2c7-5.4 17-4.2 22.5 2.8s4.2 17-2.8 22.5l-20.9 16.2L512 316.8V128h-.7l-3.9-2.5L434.8 79c-15.3-9.8-33.2-15-51.4-15c-21.8 0-43 7.5-60 21.2zm22.8 124.4l-51.7 40.2C263 274.4 217.3 268 193.7 235.6c-22.2-30.5-16.6-73.1 12.7-96.8l83.2-67.3c-11.6-4.9-24.1-7.4-36.8-7.4C234 64 215.7 69.6 200 80l-72 48V352h28.2l91.4 83.4c19.6 17.9 49.9 16.5 67.8-3.1c5.5-6.1 9.2-13.2 11.1-20.6l17 15.6c19.5 17.9 49.9 16.6 67.8-2.9c4.5-4.9 7.8-10.6 9.9-16.5c19.4 13 45.8 10.3 62.1-7.5c17.9-19.5 16.6-49.9-2.9-67.8l-134.2-123zM16 128c-8.8 0-16 7.2-16 16V352c0 17.7 14.3 32 32 32H64c17.7 0 32-14.3 32-32V128H16zM48 320a16 16 0 1 1 0 32 16 16 0 1 1 0-32zM544 128V352c0 17.7 14.3 32 32 32h32c17.7 0 32-14.3 32-32V144c0-8.8-7.2-16-16-16H544zm32 208a16 16 0 1 1 32 0 16 16 0 1 1 -32 0z"
+                />
+              </svg>
+              <span>Get In Touch</span>
+            </a>
+            <div class="contact-menu__dropdown">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 96 960 960"
+                width="40"
+                height="40"
+              >
+                <path
+                  d="m480 136 371 222q17 9 23 24.5t6 30.5v463q0 24-18 42t-42 18H140q-24 0-42-18t-18-42V413q0-15 6.5-30.5T109 358l371-222Zm0 466 336-197-336-202-336 202 336 197Zm0 67L140 469v407h680V469L480 669Zm0 207h340-680 340Z"
+                />
+              </svg>
+              <h4 style="color: white">Send me an Email at</h4>
+              <a href="mailto:thapasushil6@gmail.com" id="contact-email">
+                <span>mekahero@gmail.com</span>
+              </a>
+              <div class="seperator">
+                <div class="line"></div>
+                <div class="text">or follow on</div>
+                <div class="line"></div>
+              </div>
+              <ul class="social-icons">
+                <li>
+                  <a
+                    href="https://www.facebook.com/sushilthapa343"
+                    target="_blank"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 320 512"
+                      width="20"
+                      height="20"
+                    >
+                      <path
+                        d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"
+                      />
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.youtube.com/channel/UCWuY1s3_n_1teidTmRDkXtQ"
+                    target="_blank"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 576 512"
+                      width="20"
+                      height="20"
+                    >
+                      <path
+                        d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"
+                      />
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.instagram.com/sushilthapa98"
+                    target="_blank"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 448 512"
+                      width="20"
+                      height="20"
+                    >
+                      <path
+                        d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"
+                      />
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.tiktok.com/@creativeworks98"
+                    target="_blank"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 448 512"
+                      width="20"
+                      height="20"
+                    >
+                      <path
+                        d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"
+                      />
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.linkedin.com/in/sushilthapa98"
+                    target="_blank"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 448 512"
+                      width="20"
+                      height="20"
+                    >
+                      <path
+                        d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"
+                      />
+                    </svg>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <a href="#" id="close-btn" style="display: none">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 96 960 960"
+          width="48"
+          height="48"
+        >
+          <path
+            d="m330 768 150-150 150 150 42-42-150-150 150-150-42-42-150 150-150-150-42 42 150 150-150 150 42 42Zm150 208q-82 0-155-31.5t-127.5-86Q143 804 111.5 731T80 576q0-83 31.5-156t86-127Q252 239 325 207.5T480 176q83 0 156 31.5T763 293q54 54 85.5 127T880 576q0 82-31.5 155T763 858.5q-54 54.5-127 86T480 976Zm0-60q142 0 241-99.5T820 576q0-142-99-241t-241-99q-141 0-240.5 99T140 576q0 141 99.5 240.5T480 916Zm0-340Z"
+          />
+        </svg>
+      </a>
+      <section class="section section--about">
+        <h1>MekaHero</h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid optio
+          distinctio maxime neque tempora, perspiciatis, doloremque quam
+          incidunt eos laborum ipsa corporis ab repellat illo culpa a dolore!
+          Maiores, neque.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam quis
+          molestias magnam officiis voluptas pariatur ipsum consequuntur vero
+          obcaecati, iure placeat atque sapiente aliquam ratione provident
+          recusandae distinctio ad iusto.
+        </p>
+      </section>
+    </main>
+    <footer>2024 portfolio - MekaHero</footer>
+    <script type="module" src="/main.js"></script>
+    <script>
+      import "./style.css";
+      import * as THREE from "three";
+      import * as dat from "dat.gui";
+      import gsap from "gsap";
+      import Stats from "three/addons/libs/stats.module.js";
+      import { OrbitControls } from "three/addons/controls/OrbitControls";
+      import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+      import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
+      import { FontLoader } from "three/addons/loaders/FontLoader.js";
+      import { TextGeometry } from "three/addons/geometries/TextGeometry.js";
+
+      // VARIABLES
+      let theme = "light";
+      let bookCover = null;
+      // let lightSwitch = null;
+      let titleText = null;
+      let subtitleText = null;
+      let mixer;
+      let isMobile = window.matchMedia("(max-width: 1000px)").matches;
+      let canvas = document.querySelector(".experience-canvas");
+      const loaderWrapper = document.getElementById("loader-wrapper");
+      let clipNames = [
+        "fan_rotation",
+        "fan_rotation.001",
+        "fan_rotation.002",
+        "fan_rotation.003",
+        "fan_rotation.004",
+      ];
+      let projects = [
+        {
+          image: "textures/project-condo.png",
+          url: "https://www.condobase.xyz/home.html",
+        },
+        {
+          image: "textures/project-agmi.png",
+          url: "https://agmi.club/",
+        },
+        {
+          image: "textures/project-svad.png",
+          url: "/",
+        },
+        {
+          image: "textures/project-axoverse.png",
+          url: "https://axoverse.xyz/",
+        },
+      ];
+      let aboutCameraPos = {
+        x: 0.12,
+        y: 0.2,
+        z: 0.55,
+      };
+      let aboutCameraRot = {
+        x: -1.54,
+        y: 0.13,
+        z: 1.41,
+      };
+      let projectsCameraPos = {
+        x: 1,
+        y: 0.45,
+        z: 0.01,
+      };
+      let projectsCameraRot = {
+        x: 0.05,
+        y: 0.05,
+        z: 0,
+      };
+
+      // SCENE & CAMERA
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(
+        75,
+        window.innerWidth / window.innerHeight,
+        0.01,
+        1000
+      );
+      let defaultCameraPos = {
+        x: 1.009028643133046,
+        y: 0.5463638814987481,
+        z: 0.4983449671971,
+      };
+      let defaultCamerRot = {
+        x: -0.8313297556598935,
+        y: 0.9383399492446749,
+        z: 0.7240714481613063,
+      };
+      camera.position.set(
+        defaultCameraPos.x,
+        defaultCameraPos.y,
+        defaultCameraPos.z
+      );
+
+      // RENDERER
+      const renderer = new THREE.WebGLRenderer({
+        canvas: canvas,
+        antialias: true,
+      });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      // renderer.setPixelRatio(window.devicePixelRatio);
+      // renderer.shadowMap.enabled = true;
+      // renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+      // CONTROLS
+      const controls = new OrbitControls(camera, renderer.domElement);
+      // controls.enableDamping = true;
+      controls.enablePan = false;
+      controls.minDistance = 0.9;
+      controls.maxDistance = 1.6;
+      controls.minAzimuthAngle = 0.2;
+      controls.maxAzimuthAngle = Math.PI * 0.78;
+      controls.minPolarAngle = 0.3;
+      controls.maxPolarAngle = Math.PI / 2;
+      controls.update();
+
+      // LOAD MODEL & ASSET
+      // const loadingManager = new THREE.LoadingManager();
+      const dracoLoader = new DRACOLoader();
+      dracoLoader.setDecoderPath("draco/");
+      const gltfLoader = new GLTFLoader();
+      gltfLoader.setDRACOLoader(dracoLoader);
+      gltfLoader.load(
+        "models/room.glb",
+        function (room) {
+          // hide loader on loade
+          loaderWrapper.style.display = "none";
+
+          // load video
+          const video = document.createElement("video");
+          video.src = "textures/arcane.mp4";
+          video.muted = true;
+          video.playsInline = true;
+          video.autoplay = true;
+          video.loop = true;
+
+          // create video texture
+          const videoTexture = new THREE.VideoTexture(video);
+          videoTexture.minFilter = THREE.NearestFilter;
+          videoTexture.magFilter = THREE.NearestFilter;
+          videoTexture.generateMipmaps = false;
+          videoTexture.encoding = THREE.sRGBEncoding;
+
+          room.scene.children.forEach((child) => {
+            // disable shadow by wall
+            // if (child.name !== 'Wall') {
+            //   child.castShadow = true;
+            // }
+            // child.receiveShadow = true;
+
+            if (child.children) {
+              child.children.forEach((innerChild) => {
+                // disable shadow by book cover & switch btn
+                if (innerChild.name !== "Book001") {
+                  innerChild.castShadow = true;
+                }
+                innerChild.receiveShadow = true;
+              });
+            }
+
+            if (child.name === "Stand") {
+              child.children[0].material = new THREE.MeshBasicMaterial({
+                map: videoTexture,
+              });
+              video.play();
+            }
+
+            // transparent texture for glass
+            if (child.name === "CPU") {
+              child.children[0].material = new THREE.MeshPhysicalMaterial();
+              child.children[0].material.roughness = 0;
+              // child.children[0].material.color.set(0x999999);
+              child.children[0].material.ior = 3;
+              child.children[0].material.transmission = 2;
+              child.children[0].material.opacity = 0.8;
+              child.children[0].material.depthWrite = false;
+              child.children[0].material.depthTest = false;
+              child.children[1].material = new THREE.MeshPhysicalMaterial();
+              child.children[1].material.roughness = 0;
+              // child.children[1].material.color.set(0x999999);
+              child.children[1].material.ior = 3;
+              child.children[1].material.transmission = 1;
+              child.children[1].material.opacity = 0.8;
+              child.children[1].material.depthWrite = false;
+              child.children[1].material.depthTest = false;
+            }
+
+            if (child.name === "Book") {
+              bookCover = child.children[0];
+
+              // adding texture to book
+              const bookTexture = new THREE.TextureLoader().load(
+                "textures/book-inner.png"
+              );
+              bookTexture.flipY = false;
+              child.material = new THREE.MeshStandardMaterial({
+                color: 0xffffff,
+                map: bookTexture,
+              });
+            }
+
+            // if (child.name === 'SwitchBoard') {
+            //   lightSwitch = child.children[0];
+            // }
+          });
+
+          scene.add(room.scene);
+          animate();
+
+          // add animation
+          // mixer = new THREE.AnimationMixer(room.scene);
+          // const clips = room.animations;
+          // clipNames.forEach((clipName) => {
+          //   const clip = THREE.AnimationClip.findByName(clips, clipName);
+          //   if (clip) {
+          //     const action = mixer.clipAction(clip);
+          //     action.play();
+          //   }
+          // });
+
+          // loadIntroText();
+
+          // add event listeners
+          logoListener();
+          aboutMenuListener();
+          projectsMenuListener();
+          init3DWorldClickListeners();
+          initResponsive(room.scene);
+        },
+        function (error) {
+          console.error(error);
+        }
+      );
+
+      // ADD LIGHT
+      const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+      scene.add(ambientLight);
+      const roomLight = new THREE.PointLight(0xffffff, 2.5, 10);
+      roomLight.position.set(0.3, 2, 0.5);
+      roomLight.castShadow = true;
+      roomLight.shadow.radius = 5;
+      roomLight.shadow.mapSize.width = 2048;
+      roomLight.shadow.mapSize.height = 2020;
+      roomLight.shadow.camera.far = 2.5;
+      // roomLight.shadow.camera.fov = 100;
+      roomLight.shadow.bias = -0.002;
+      scene.add(roomLight);
+      // add light for pc fans
+      const fanLight1 = new THREE.PointLight(0xff0000, 30, 0.2);
+      const fanLight2 = new THREE.PointLight(0x00ff00, 30, 0.12);
+      const fanLight3 = new THREE.PointLight(0x00ff00, 30, 0.2);
+      const fanLight4 = new THREE.PointLight(0x00ff00, 30, 0.2);
+      const fanLight5 = new THREE.PointLight(0x00ff00, 30, 0.05);
+      fanLight1.position.set(0, 0.29, -0.29);
+      fanLight2.position.set(-0.15, 0.29, -0.29);
+      fanLight3.position.set(0.21, 0.29, -0.29);
+      fanLight4.position.set(0.21, 0.19, -0.29);
+      fanLight5.position.set(0.21, 0.08, -0.29);
+      scene.add(fanLight1);
+      scene.add(fanLight2);
+      scene.add(fanLight3);
+      scene.add(fanLight4);
+      scene.add(fanLight5);
+      // add point light for text on wall
+      const pointLight1 = new THREE.PointLight(0xff0000, 0, 1.1);
+      const pointLight2 = new THREE.PointLight(0xff0000, 0, 1.1);
+      const pointLight3 = new THREE.PointLight(0xff0000, 0, 1.1);
+      const pointLight4 = new THREE.PointLight(0xff0000, 0, 1.1);
+      pointLight1.position.set(-0.2, 0.6, 0.24);
+      pointLight2.position.set(-0.2, 0.6, 0.42);
+      pointLight3.position.set(-0.2, 0.6, 0.01);
+      pointLight4.position.set(-0.2, 0.6, -0.14);
+      scene.add(pointLight1);
+      scene.add(pointLight2);
+      scene.add(pointLight3);
+      scene.add(pointLight4);
+
+      const clock = new THREE.Clock();
+      function animate() {
+        requestAnimationFrame(animate);
+        // controls.update();
+        if (mixer) {
+          // mixer.update(clock.getDelta());
+        }
+        renderer.render(scene, camera);
+        // stats.update();
+      }
+
+      function loadIntroText() {
+        const loader = new FontLoader();
+        loader.load("fonts/unione.json", function (font) {
+          const textMaterials = [
+            new THREE.MeshPhongMaterial({ color: 0x171f27, flatShading: true }),
+            new THREE.MeshPhongMaterial({ color: 0xffffff }),
+          ];
+          const titleGeo = new TextGeometry("MekaHero", {
+            font: font,
+            size: 0.08,
+            height: 0.01,
+          });
+          titleText = new THREE.Mesh(titleGeo, textMaterials);
+          titleText.rotation.y = Math.PI * 0.5;
+          titleText.position.set(-0.27, 0.55, 0.5);
+          scene.add(titleText);
+        });
+
+        loader.load("fonts/helvatica.json", function (font) {
+          // const textMaterials = [
+          //   new THREE.MeshPhongMaterial({ color: 0x171f27, flatShading: true }),
+          //   new THREE.MeshPhongMaterial({ color: 0xffffff }),
+          // ];
+          // const subTitleGeo = new TextGeometry(
+          //   'Web Designer / Developer / Content Creator',
+          //   {
+          //     font: font,
+          //     size: 0.018,
+          //     height: 0,
+          //   }
+          // );
+          // subtitleText = new THREE.Mesh(subTitleGeo, textMaterials);
+          // subtitleText.rotation.y = Math.PI * 0.5;
+          // subtitleText.position.set(-0.255, 0.5, 0.5);
+          // scene.add(subtitleText);
+        });
+      }
+
+      // function switchTheme(themeType) {
+      //   if (themeType === 'dark') {
+      //     lightSwitch.rotation.z = Math.PI / 7;
+      //     document.body.classList.remove('light-theme');
+      //     document.body.classList.add('dark-theme');
+
+      //     // main lights
+      //     gsap.to(roomLight.color, {
+      //       r: 0.27254901960784313,
+      //       g: 0.23137254901960785,
+      //       b: 0.6862745098039216,
+      //     });
+      //     gsap.to(ambientLight.color, {
+      //       r: 0.17254901960784313,
+      //       g: 0.23137254901960785,
+      //       b: 0.6862745098039216,
+      //     });
+      //     gsap.to(roomLight, {
+      //       intensity: 1.5,
+      //     });
+      //     gsap.to(ambientLight, {
+      //       intensity: 0.3,
+      //     });
+
+      //     // fan lights
+      //     gsap.to(fanLight5, {
+      //       distance: 0.07,
+      //     });
+
+      //     // text color
+      //     gsap.to(titleText.material[0].color, {
+      //       r: 8,
+      //       g: 8,
+      //       b: 8,
+      //       duration: 0,
+      //     });
+      //     gsap.to(titleText.material[1].color, {
+      //       r: 5,
+      //       g: 5,
+      //       b: 5,
+      //       duration: 0,
+      //     });
+      //     gsap.to(subtitleText.material[0].color, {
+      //       r: 8,
+      //       g: 8,
+      //       b: 8,
+      //       duration: 0,
+      //     });
+      //     gsap.to(subtitleText.material[1].color, {
+      //       r: 5,
+      //       g: 5,
+      //       b: 5,
+      //       duration: 0,
+      //     });
+
+      //     // text light
+      //     gsap.to(pointLight1, {
+      //       intensity: 0.6,
+      //     });
+      //     gsap.to(pointLight2, {
+      //       intensity: 0.6,
+      //     });
+      //     gsap.to(pointLight3, {
+      //       intensity: 0.6,
+      //     });
+      //     gsap.to(pointLight4, {
+      //       intensity: 0.6,
+      //     });
+      //   } else {
+      //     lightSwitch.rotation.z = 0;
+      //     document.body.classList.remove('dark-theme');
+      //     // document.body.classList.add('light-theme');
+
+      //     // main light
+      //     gsap.to(roomLight.color, {
+      //       r: 1,
+      //       g: 1,
+      //       b: 1,
+      //     });
+      //     gsap.to(ambientLight.color, {
+      //       r: 1,
+      //       g: 1,
+      //       b: 1,
+      //     });
+      //     gsap.to(roomLight, {
+      //       intensity: 2.5,
+      //     });
+      //     gsap.to(ambientLight, {
+      //       intensity: 0.6,
+      //     });
+
+      //     // fan light
+      //     gsap.to(fanLight5, {
+      //       distance: 0.05,
+      //     });
+
+      //     // text color
+      //     gsap.to(titleText.material[0].color, {
+      //       r: 0.09019607843137255,
+      //       g: 0.12156862745098039,
+      //       b: 0.15294117647058825,
+      //       duration: 0,
+      //     });
+      //     gsap.to(titleText.material[1].color, {
+      //       r: 1,
+      //       g: 1,
+      //       b: 1,
+      //       duration: 0,
+      //     });
+      //     gsap.to(subtitleText.material[0].color, {
+      //       r: 0.09019607843137255,
+      //       g: 0.12156862745098039,
+      //       b: 0.15294117647058825,
+      //       duration: 0,
+      //     });
+      //     gsap.to(subtitleText.material[1].color, {
+      //       r: 1,
+      //       g: 1,
+      //       b: 1,
+      //       duration: 0,
+      //     });
+
+      //     // text light
+      //     gsap.to(pointLight1, {
+      //       intensity: 0,
+      //     });
+      //     gsap.to(pointLight2, {
+      //       intensity: 0,
+      //     });
+      //     gsap.to(pointLight3, {
+      //       intensity: 0,
+      //     });
+      //     gsap.to(pointLight4, {
+      //       intensity: 0,
+      //     });
+      //   }
+      // }
+
+      function enableOrbitControls() {
+        controls.enabled = true;
+      }
+
+      function disableOrbitControls() {
+        controls.enabled = false;
+      }
+
+      function enableCloseBtn() {
+        document.getElementById("close-btn").style.display = "block";
+      }
+
+      function disableCloseBtn() {
+        document.getElementById("close-btn").style.display = "none";
+      }
+
+      function resetBookCover() {
+        if (!bookCover) return;
+
+        gsap.to(bookCover.rotation, {
+          x: 0,
+          duration: 1.5,
+        });
+      }
+
+      function resetProjects() {
+        if (projects.length === 0) return;
+
+        projects.forEach((project, i) => {
+          gsap.to(project.mesh.material, {
+            opacity: 0,
+            duration: 1,
+          });
+          gsap.to(project.mesh.position, {
+            y: project.y,
+            duration: 1,
+          });
+          gsap.to(project.mesh.scale, {
+            x: 0,
+            y: 0,
+            z: 0,
+            duration: 0,
+            delay: 1,
+          });
+        });
+      }
+
+      function resetCamera() {
+        resetBookCover();
+        resetProjects();
+        disableCloseBtn();
+        gsap.to(camera.position, {
+          ...defaultCameraPos,
+          duration: 1.5,
+        });
+        gsap.to(camera.rotation, {
+          ...defaultCamerRot,
+          duration: 1.5,
+        });
+        gsap.delayedCall(1.5, enableOrbitControls);
+
+        // reset dimmed light for about display
+        if (theme !== "dark") {
+          gsap.to(roomLight, {
+            intensity: 2.5,
+            duration: 1.5,
+          });
+        }
+      }
+
+      function logoListener() {
+        document.getElementById("logo").addEventListener("click", function (e) {
+          e.preventDefault();
+          resetCamera();
+        });
+      }
+
+      function cameraToAbout() {
+        if (!bookCover) return;
+
+        gsap.to(camera.position, {
+          ...aboutCameraPos,
+          duration: 1.5,
+        });
+        gsap.to(camera.rotation, {
+          ...aboutCameraRot,
+          duration: 1.5,
+        });
+        gsap.to(bookCover.rotation, {
+          x: Math.PI,
+          duration: 1.5,
+          delay: 1.5,
+        });
+
+        // prevent about text clutter due to bright light
+        if (theme !== "dark") {
+          gsap.to(roomLight, {
+            intensity: 1,
+            duration: 1.5,
+          });
+        }
+      }
+
+      function aboutMenuListener() {
+        document
+          .getElementById("about-menu")
+          .addEventListener("click", function (e) {
+            e.preventDefault();
+            disableOrbitControls();
+            resetProjects();
+            cameraToAbout();
+            gsap.delayedCall(1.5, enableCloseBtn);
+          });
+      }
+
+      function projectsMenuListener() {
+        // create project planes with textures
+        projects.forEach((project, i) => {
+          const colIndex = i % 3 === 0 ? 0 : 1;
+          const rowIndex = Math.floor(i / 3);
+          const geometry = new THREE.PlaneGeometry(0.71, 0.4);
+          const material = new THREE.MeshBasicMaterial({
+            color: 0xffffff,
+            map: new THREE.TextureLoader().load(project.image),
+            transparent: true,
+            opacity: 0.0,
+          });
+          const projectPlane = new THREE.Mesh(geometry, material);
+          projectPlane.name = "project";
+          projectPlane.userData = {
+            url: project.url,
+          };
+          projectPlane.position.set(
+            0.3 + i * 0.8 * colIndex,
+            1 - rowIndex * 0.5,
+            -1.15
+          );
+          projectPlane.scale.set(0, 0, 0);
+          // mesh & y vars needed for animation
+          projects[i].mesh = projectPlane;
+          projects[i].y = 1 - rowIndex * 0.5;
+          scene.add(projectPlane);
+        });
+
+        document
+          .getElementById("projects-menu")
+          .addEventListener("click", function (e) {
+            e.preventDefault();
+            disableOrbitControls();
+            resetBookCover();
+            gsap.to(camera.position, {
+              ...projectsCameraPos,
+              duration: 1.5,
+            });
+            gsap.to(camera.rotation, {
+              ...projectsCameraRot,
+              duration: 1.5,
+            });
+            gsap.delayedCall(1.5, enableCloseBtn);
+
+            // animate & show project items
+            projects.forEach((project, i) => {
+              project.mesh.scale.set(1, 1, 1);
+              gsap.to(project.mesh.material, {
+                opacity: 1,
+                duration: 1.5,
+                delay: 1.5 + i * 0.1,
+              });
+              gsap.to(project.mesh.position, {
+                y: project.y + 0.05,
+                duration: 1,
+                delay: 1.5 + i * 0.1,
+              });
+            });
+          });
+      }
+
+      function init3DWorldClickListeners() {
+        const mousePosition = new THREE.Vector2();
+        const raycaster = new THREE.Raycaster();
+        let intersects;
+
+        window.addEventListener("click", function (e) {
+          // store value set to prevent multi time update in foreach loop
+          const newTheme = theme === "light" ? "dark" : "light";
+
+          // prevent about focus on button click which are positioned above book in mobile view
+          const closeBtn = document.getElementById("close-btn");
+          const projectsBtn = document.getElementById("projects-menu");
+          if (
+            e.target === closeBtn ||
+            closeBtn.contains(e.target) ||
+            e.target === projectsBtn ||
+            projectsBtn.contains(e.target)
+          ) {
+            return false;
+          }
+
+          mousePosition.x = (e.clientX / window.innerWidth) * 2 - 1;
+          mousePosition.y = -(e.clientY / window.innerHeight) * 2 + 1;
+          raycaster.setFromCamera(mousePosition, camera);
+          intersects = raycaster.intersectObjects(scene.children);
+          intersects.forEach((intersect) => {
+            if (intersect.object.name === "project") {
+              intersect.object.userData.url &&
+                window.open(intersect.object.userData.url);
+            }
+
+            if (intersect.object.name === "Book") {
+              disableOrbitControls();
+              cameraToAbout();
+              gsap.delayedCall(1.5, enableCloseBtn);
+            }
+
+            // if (
+            //   intersect.object.name === 'SwitchBoard' ||
+            //   intersect.object.name === 'Switch'
+            // ) {
+            //   theme = newTheme;
+            //   switchTheme(theme);
+            // }
+          });
+        });
+      }
+
+      // RESPONSIVE
+      function initResponsive(roomScene) {
+        if (isMobile) {
+          roomScene.scale.set(0.95, 0.95, 0.95);
+          aboutCameraPos = {
+            x: 0.09,
+            y: 0.23,
+            z: 0.51,
+          };
+          aboutCameraRot = {
+            x: -1.57,
+            y: 0,
+            z: 1.57,
+          };
+
+          // rect light
+          // rectLight.width = 0.406;
+          // rectLight.height = 0.3;
+          // rectLight.position.z = -0.34;
+
+          // project
+          projectsCameraPos = {
+            x: 1.1,
+            y: 0.82,
+            z: 0.5,
+          };
+          projectsCameraRot = {
+            x: 0,
+            y: 0,
+            z: 1.55,
+          };
+          projects.forEach((project, i) => {
+            project.mesh.position.z = -1.13;
+          });
+
+          controls.maxDistance = 1.5;
+          controls.maxAzimuthAngle = Math.PI * 0.75;
+        }
+      }
+
+      // close button
+      document.getElementById("close-btn").addEventListener("click", (e) => {
+        e.preventDefault();
+        resetCamera();
+      });
+
+      // contact menu
+      document.getElementById("contact-btn").addEventListener("click", (e) => {
+        e.preventDefault();
+        document
+          .querySelector(".contact-menu__dropdown")
+          .classList.toggle("contact-menu__dropdown--open");
+      });
+
+      document.addEventListener("mouseup", (e) => {
+        const container = document.querySelector(".contact-menu");
+        if (!container.contains(e.target)) {
+          container
+            .querySelector(".contact-menu__dropdown")
+            .classList.remove("contact-menu__dropdown--open");
+        }
+      });
+
+      // update camera, renderer on resize
+      window.addEventListener("resize", () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      });
+    </script>
+  </body>
+</html>
